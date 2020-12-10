@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Intermediate from "./components/Intermediate";
 import "./styles.css";
+import Logo from "./self_improvement-white-18dp.svg";
+import arrow from "./arrow_drop_down-24px (1).svg";
 
 class App extends Component {
   constructor(props) {
@@ -86,20 +88,23 @@ class App extends Component {
       return (
         <div className="App">
           {/*start of drop down button menu*/}
+
+          <img class="logo" src={Logo} alt="this is the logo" />
+
           <h1 class="display-1">Quick Stretch</h1>
 
           <p class="lead">Take a moment and find the stretch that suits you</p>
 
           <button
-            class="shadow p-3 mb-5 bg-white rounded"
-            className="btn btn-secondary dropdown-toggle"
+            className="dropdownbtn"
             type="button"
             id="dropdownMenu2"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Please select your level
+            Please select your level &nbsp;{" "}
+            <img class="arrow" src={arrow} alt="dropdown arrow" />
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
             <button
@@ -118,7 +123,8 @@ class App extends Component {
             </button>
           </div>
           {/*end of drop down button menu*/}
-
+          <br />
+          <br />
           {/*The below ternary operator works as follows. On Beginner button click it turns the isBeginner value to true. If the isBeginner is true 
           the Beginner Componenent is called. Click the Beginner button again and it returns to false, in which case nothing is mapped.
           Syntactically the ternary does this... is true ? do something : else something. First condition is executed after ? second condition after :*/}
@@ -139,10 +145,9 @@ class App extends Component {
           {/*End of intermediate map ternary statement triggered by a drop down button click*/}
           <div>
             <br></br>
-            <p>
+            <p className="footer">
               <small>This app was created by Team Silver.</small>
-            </p>
-            <p>
+              <br />
               <small> Greta, Anna, John and Cathal </small>
             </p>
           </div>
@@ -171,7 +176,8 @@ class Beginner extends Component {
                   src={person.imgURL}
                   key={index}
                 />
-
+                <br />
+                <br />
                 <h3 className="card-title">{person.body_part}</h3>
                 <h5 className="car-title">{person.position}</h5>
                 <p className="card-text">{person.description}</p>
