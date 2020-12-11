@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Intermediate from "./components/Intermediate";
+import Advanced from "./components/Advanced";
 import "./styles.css";
 import Logo from "./self_improvement-white-18dp.svg";
 import arrow from "./arrow_drop_down-24px (1).svg";
@@ -17,24 +18,38 @@ class App extends Component {
       apiData: [],
       apiDataBeginner: [],
       apiDataIntermediate: [],
+      apiDataAdvanced: [],
       isFetched: false,
       errorMsg: null,
       isBeginner: false,
-      isIntermediate: false
+      isIntermediate: false,
+      isAdvanced: false
     };
 
     this.toggleBeginner = this.toggleBeginner.bind(this);
     this.toggleIntermediate = this.toggleIntermediate.bind(this);
+    this.toggleAdvanced = this.toggleAdvanced.bind(this);
   }
   //****************function called on button click, isBeginner/isIntermediate = true*********************//
   //****************this function can be copied for each button********************//
   toggleBeginner = () => {
+    this.setState({ isIntermediate: false });
+    this.setState({ isAdvanced: false });
     this.setState((state) => ({ isBeginner: !state.isBeginner }));
   };
 
   toggleIntermediate = () => {
+    this.setState({ isBeginner: false });
+    this.setState({ isAdvanced: false });
     this.setState((state) => ({ isIntermediate: !state.isIntermediate }));
   };
+
+  toggleAdvanced = () => {
+    this.setState({ isBeginner: false });
+    this.setState({ isIntermediate: false });
+    this.setState((state) => ({ isAdvanced: !state.isAdvanced }));
+  };
+
   //****************function called on button click, isBeginner/isIntermediate = true*********************//
 
   //****************API calls starts here********************//
@@ -54,6 +69,8 @@ class App extends Component {
       //access different parts of the json array by initializing this.setState and creating key:value pairs.
       this.setState({ apiDataBeginner: jsonResult.beginner });
       this.setState({ apiDataIntermediate: jsonResult.intermediate });
+      this.setState({ apiDataAdvanced: jsonResult.advanced });
+
       this.setState({ isFetched: true });
     } catch (error) {
       // In the case of an error ...
@@ -121,6 +138,13 @@ class App extends Component {
             >
               Intermediate
             </button>
+            <button
+              onClick={this.toggleAdvanced}
+              className="dropdown-item"
+              type="button"
+            >
+              Advanced
+            </button>
           </div>
           {/*end of drop down button menu*/}
           <br />
@@ -143,6 +167,10 @@ class App extends Component {
             />
           ) : null}
           {/*End of intermediate map ternary statement triggered by a drop down button click*/}
+          {this.state.isAdvanced ? (
+            <Advanced mapObjectAdvanced={this.state.apiDataAdvanced} />
+          ) : null}
+
           <div>
             <br></br>
             <p className="footer">
