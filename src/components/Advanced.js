@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
-class Intermediate extends Component {
+class Advanced extends Component {
   render() {
-    const mapIntermediate = this.props.mapObjectIntermediate;
+    //this const declaration connects this Beginner class to the App class. It is the way to pass the//
+    //apiDataBeginner state to call the map function on it from within this component//
+    const mapAdvanced = this.props.mapObjectAdvanced;
+
     return (
       <div className="card-group">
-        {mapIntermediate.map((person, index) => (
+        {mapAdvanced.map((person, index) => (
           <div className="card text-center">
             <div class="card">
               <div className="card-body">
@@ -15,7 +18,8 @@ class Intermediate extends Component {
                   src={person.imgURL}
                   key={index}
                 />
-
+                <br />
+                <br />
                 <h3 className="card-title">{person.body_part}</h3>
                 <h5 className="car-title">{person.position}</h5>
                 <p className="card-text">{person.description}</p>
@@ -32,4 +36,4 @@ class Intermediate extends Component {
   }
 }
 
-export default Intermediate;
+export default Advanced;
