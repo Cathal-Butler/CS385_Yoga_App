@@ -147,6 +147,13 @@ class App extends Component {
             >
               Advanced
             </button>
+            <button
+              onClick={this.toggleAdvanced}
+              className="dropdown-item"
+              type="button"
+            >
+              Your Custom Routine
+            </button>
           </div>
           {/*end of drop down button menu*/}
           <br />
