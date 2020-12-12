@@ -26,6 +26,9 @@ class Beginner extends Component {
                 <audio controls autoplay>
                   <source src={person.audio} />
                 </audio>
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                  Add to Routine
+                </button>
               </div>
             </div>
           </div>
