@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 
-class Advanced extends Component {
+class Custom extends Component {
   render() {
     //this const declaration connects this Beginner class to the App class. It is the way to pass the//
     //apiDataBeginner state to call the map function on it from within this component//
-    const mapAdvanced = this.props.mapObjectAdvanced;
-    const onPick = this.props.pickAdvanced;
-    const childCheckButton = this.props.childCheckButton;
-
+    const mapCustom = this.props.mapObjectCustom;
     return (
       <div className="card-group">
-        {mapAdvanced.map((person) => (
+        {mapCustom.map((person, index) => (
           <div className="card text-center">
             <div class="card">
               <div className="card-body">
@@ -18,7 +15,7 @@ class Advanced extends Component {
                   className="card-img-top"
                   alt="yogapic"
                   src={person.imgURL}
-                  key={person.id}
+                  key={index}
                 />
                 <br />
                 <br />
@@ -29,21 +26,21 @@ class Advanced extends Component {
                 <audio controls autoplay>
                   <source src={person.audio} />
                 </audio>
-                <button
-                  disabled={childCheckButton(person.id) && true}
-                  onClick={() => onPick(person.id)}
-                  type="button"
-                  className="btn btn-primary btn-lg btn-block"
-                >
-                  {childCheckButton(person.id) ? "Stretch Added" : "Add"}
-                </button>
               </div>
             </div>
           </div>
         ))}
+        {mapCustom.length <= 0 && (
+          <div className="card">
+            <img src="https://i.imgur.com/SHoxUWx.gif" alt="Empty"></img>
+            <p className="card-text">
+              There's nothing here, add some stretches.
+            </p>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default Advanced;
+export default Custom;
