@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import ReactAudioPlayer from "react-audio-player";
 class Beginner extends Component {
   render() {
     //this const declaration connects this Beginner class to the App class. It is the way to pass the//
     //apiDataBeginner state to call the map function on it from within this component//
     const mapBeginner = this.props.mapObjectBeginner;
+    const onPick = this.props.pickBeginner;
+    const childCheckButton = this.props.childCheckButton;
 
     return (
       <div className="card-group">
-        {mapBeginner.map((person, index) => (
+        {mapBeginner.map((person) => (
           <div className="card text-center">
             <div class="card">
               <div className="card-body">
@@ -16,7 +17,7 @@ class Beginner extends Component {
                   className="card-img-top"
                   alt="yogapic"
                   src={person.imgURL}
-                  key={index}
+                  key={person.id}
                 />
                 <br />
                 <br />
@@ -24,9 +25,16 @@ class Beginner extends Component {
                 <h5 className="car-title">{person.position}</h5>
                 <p className="card-text">{person.description}</p>
 
-                <ReactAudioPlayer src={person.audio} autoplay controls />
-                <button type="button" class="btn btn-primary btn-lg btn-block">
-                  Add to Routine
+                <audio controls autoplay>
+                  <source src={person.audio} />
+                </audio>
+                <button
+                  disabled={childCheckButton(person.id) && true}
+                  onClick={() => onPick(person.id)}
+                  type="button"
+                  className="btn btn-primary btn-lg btn-block"
+                >
+                  {childCheckButton(person.id) ? "Stretch Added" : "Add"}
                 </button>
               </div>
             </div>
