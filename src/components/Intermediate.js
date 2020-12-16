@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import ReactAudioPlayer from "react-audio-player";
 class Intermediate extends Component {
   render() {
     const mapIntermediate = this.props.mapObjectIntermediate;
@@ -23,9 +23,7 @@ class Intermediate extends Component {
                 <h5 className="car-title">{person.position}</h5>
                 <p className="card-text">{person.description}</p>
 
-                <audio controls autoplay>
-                  <source src={person.audio} />
-                </audio>
+                <ReactAudioPlayer src={person.audio} autoplay controls />
                 <button
                   disabled={childCheckButton(person.id) && true}
                   onClick={() => onPick(person.id)}

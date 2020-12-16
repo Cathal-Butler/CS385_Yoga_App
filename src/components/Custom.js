@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import ReactAudioPlayer from "react-audio-player";
 class Custom extends Component {
   render() {
     //this const declaration connects this Beginner class to the App class. It is the way to pass the//
@@ -23,9 +23,7 @@ class Custom extends Component {
                 <h5 className="car-title">{person.position}</h5>
                 <p className="card-text">{person.description}</p>
 
-                <audio controls autoplay>
-                  <source src={person.audio} />
-                </audio>
+                <ReactAudioPlayer src={person.audio} autoplay controls />
               </div>
             </div>
           </div>
