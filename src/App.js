@@ -281,9 +281,10 @@ class App extends Component {
             {/**Custom Routine and Disable Buttons Reset, appears when items have been added***/}
             {this.state.routineArray.length > 0 && (
               <button
+                style={{ margin: "1rem 0 0 0" }}
                 onClick={this.reset}
                 type="button"
-                className="btn btn-info btn-lg btn-block"
+                className="btn btn-warning btn-lg btn-block"
               >
                 Reset Custom Routine
               </button>
